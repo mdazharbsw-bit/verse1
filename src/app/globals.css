@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   VERVE Design System — Tailwind v4 Theme
+   ============================================ */
+@theme {
+  /* Colors */
+  --color-background: #000000;
+  --color-surface: #0F0F0F;
+  --color-surface-light: #111111;
+  --color-primary: #FFFFFF;
+  --color-secondary: #B3B3B3;
+  --color-border: #262626;
+  --color-border-light: #333333;
+  --color-foreground: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Container */
+  --container-max: 1440px;
+  --content-max: 1280px;
+
+  /* Radius */
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  /* Transitions */
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ============================================
+   Base Resets
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  background-color: #000000;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Selection */
+::selection {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* ============================================
+   Typography Classes
+   ============================================ */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Display Headlines */
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.text-display-md {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.text-display-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.text-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.text-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #B3B3B3;
+}
+
+/* ============================================
+   Layout Utilities
+   ============================================ */
+.container-verve {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(2rem, 5vw, 5rem);
+  padding-right: clamp(2rem, 5vw, 5rem);
+}
+
+.content-verve {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   Section Spacing
+   ============================================ */
+.section-padding {
+  padding-top: clamp(6rem, 10vw, 10rem);
+  padding-bottom: clamp(6rem, 10vw, 10rem);
+}
+
+.section-padding-sm {
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+/* ============================================
+   Noise Overlay
+   ============================================ */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================
+   Custom Cursor
+   ============================================ */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: width 0.3s var(--ease-out-cubic),
+              height 0.3s var(--ease-out-cubic),
+              background-color 0.3s var(--ease-out-cubic);
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot.expanded {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  mix-blend-mode: normal;
+}
+
+.cursor-dot.expanded .cursor-text {
+  opacity: 1;
+}
+
+.cursor-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out-cubic);
+  white-space: nowrap;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   Animation Utility Classes
+   ============================================ */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-mask {
+  clip-path: inset(100% 0 0 0);
+}
+
+.reveal-mask.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   Page Loader
+   ============================================ */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loader-logo {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+/* ============================================
+   Marquee
+   ============================================ */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-reverse {
+  display: inline-flex;
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ============================================
+   Scroll Indicator
+   ============================================ */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.5; }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2s var(--ease-in-out-cubic) infinite;
+}
+
+/* ============================================
+   Border Animation on Cards
+   ============================================ */
+.card-hover-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  transition: border-color 0.6s var(--ease-out-cubic);
+  pointer-events: none;
+}
+
+.card-hover-border:hover::after {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-up,
+  .reveal-mask,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Link underline animation
+   ============================================ */
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #FFFFFF;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-out-cubic);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ============================================
+   Horizontal Scroll Section
+   ============================================ */
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+
+/* ============================================
+   Image Parallax Container
+   ============================================ */
+.parallax-image-container {
+  overflow: hidden;
+}
+
+.parallax-image-container img {
+  transition: transform 0.1s linear;
+}
+
+/* ============================================
+   Form Inputs
+   ============================================ */
+.verve-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #262626;
+  padding: 1rem 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.4s var(--ease-out-cubic);
+}
+
+.verve-input:focus {
+  border-color: #FFFFFF;
+}
+
+.verve-input::placeholder {
+  color: #555555;
+  font-weight: 300;
+}
+
+/* Textarea */
+.verve-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #262626;
+  padding: 1rem 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: #FFFFFF;
+  outline: none;
+  resize: none;
+  min-height: 120px;
+  transition: border-color 0.4s var(--ease-out-cubic);
+}
+
+.verve-textarea:focus {
+  border-color: #FFFFFF;
+}
+
+.verve-textarea::placeholder {
+  color: #555555;
+  font-weight: 300;
+}
+
+/* ============================================
+   Service Marquee
+   ============================================ */
+.marquee-section {
+  width: 100%;
+  overflow: hidden;
+  background-color: #000000;
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626;
+  padding: 1.5rem 0;
+}
+
+.marquee-track-service {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-content-service {
+  display: flex;
+  align-items: center;
+  animation: scroll-marquee 25s linear infinite;
+}
+
+.marquee-content-service span {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2vw, 1.75rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+.marquee-content-service .marquee-dot {
+  color: rgba(255, 255, 255, 0.15);
+  margin: 0 2rem;
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
